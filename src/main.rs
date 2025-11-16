@@ -41,7 +41,7 @@ fn main() {
             let username = if cli.username.starts_with("op://") {
                 OnePassword::get_item(&cli.username)
             } else {
-                cli.username.to_owned()
+                cli.username
             };
             let token = OnePassword::get_item(&cli.token);
 
