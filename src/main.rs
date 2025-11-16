@@ -9,12 +9,14 @@ mod op;
     author = env!("CARGO_PKG_AUTHORS"),
     version = env!("CARGO_PKG_VERSION"),
     about = env!("CARGO_PKG_DESCRIPTION"),
-    long_about = None
+    long_about = None,
 )]
 struct Cli {
     #[arg(help = "The username or 1Password item reference for the username, e.g. username")]
     username: String,
-    #[arg(help = "The token or 1Password item reference for the token, e.g. op://vault/item/field")]
+    #[arg(
+        help = "The token or 1Password item reference for the token, e.g. op://vault/item/field"
+    )]
     token: String,
 
     #[command(subcommand)]
