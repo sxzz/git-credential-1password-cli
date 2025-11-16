@@ -1,6 +1,6 @@
 # git-credential-1password-cli
 
-A Git credential helper that integrates with 1Password CLI
+A Git credential helper that integrates with 1Password CLI.
 
 ## Install
 
