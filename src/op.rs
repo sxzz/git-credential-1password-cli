@@ -1,4 +1,4 @@
-use std::process::Command;
+use std::{io::ErrorKind, process::Command};
 
 pub struct OnePassword {}
 
@@ -14,7 +14,14 @@ impl OnePassword {
             .arg(reference)
             .arg("-n")
             .output()
-            .expect("failed to execute process");
+            .unwrap_or_else(|e| {
+                if e.kind() == ErrorKind::NotFound {
+                    eprintln!("Error: 'op' command not found. Please ensure that 1Password CLI is installed and accessible in your PATH.");
+                } else {
+                    eprintln!("Failed to execute 'op' command: {}", e);
+                }
+                std::process::exit(1);
+            });
 
         if output.status.success() {
             let token =
